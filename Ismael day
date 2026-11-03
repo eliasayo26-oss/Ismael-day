@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La grande riabilitazione sociale di Ismael</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --pink: #ff78ad;
+  --purple: #a78bfa;
+  --yellow: #ffe66d;
+  --green: #a8e6a3;
+  --blue: #8edbff;
+  --orange: #ffad70;
+  --ink: #34264d;
+  --paper: #fffaf1;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #ffe0ed 0 8%, transparent 25%),
+    radial-gradient(circle at 90% 20%, #d9ceff 0 8%, transparent 25%),
+    radial-gradient(circle at 80% 90%, #d5f5d2 0 8%, transparent 25%),
+    #fff8ed;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Baloo 2', cursive;
+}
+
+button, input, textarea { font: inherit; }
+
+button { cursor: pointer; }
+
+a { color: #7650c9; font-weight: 900; }
+
+.container {
+  width: min(100% - 30px, 850px);
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 55px 15px 35px;
+  position: relative;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--yellow);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 900;
+  transform: rotate(-2deg);
+  box-shadow: 3px 4px 0 var(--ink);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: .98;
+  margin: 25px auto 15px;
+  max-width: 750px;
+  color: #7c52c8;
+  text-shadow: 3px 3px 0 #ffd5e6;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 12px auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.frog-area {
+  margin: 20px auto;
+  height: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.frog {
+  font-size: 115px;
+  display: inline-block;
+  animation: frogBounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 0 #b4e7a9);
+  cursor: pointer;
+}
+
+.frog:hover { animation: frogDance .5s infinite alternate; }
+
+@keyframes frogBounce {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-17px) rotate(4deg); }
+}
+
+@keyframes frogDance {
+  from { transform: rotate(-15deg) scale(1.05); }
+  to { transform: rotate(15deg) scale(1.15); }
+}
+
+.floating {
+  position: absolute;
+  font-size: 28px;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+.f1 { left: 20%; top: 10px; }
+.f2 { right: 20%; top: 25px; animation-delay: .7s; }
+.f3 { left: 27%; bottom: 5px; animation-delay: 1.2s; }
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(15deg); }
+}
+
+.card {
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: 25px;
+  padding: 25px;
+  margin: 22px 0;
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.card.pink { background: #ffe1ed; }
+.card.yellow { background: #fff1a8; }
+.card.green { background: #dff7d9; }
+.card.blue { background: #dff4ff; }
+.card.purple { background: #eee5ff; }
+.card.orange { background: #ffe4cc; }
+
+h2 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: 1.45rem;
+  margin: 0 0 8px;
+}
+
+p { line-height: 1.65; }
+
+.small {
+  font-size: .9rem;
+  opacity: .8;
+}
+
+.progress-wrap {
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  padding: 7px;
+  margin: 25px 0;
+}
+
+.progress-bar {
+  height: 20px;
+  width: 0%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue), var(--green));
+  transition: width .5s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-weight: 900;
+  margin-top: 8px;
+}
+
+.mission {
+  position: relative;
+  transition: transform .2s;
+}
+
+.mission:hover { transform: translateY(-3px) rotate(-.3deg); }
+
+.mission-number {
+  display: inline-block;
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.mission label.check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  margin: 18px 0 5px;
+}
+
+.mission input[type="checkbox"] {
+  appearance: none;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.mission input[type="checkbox"]:checked {
+  background: var(--green);
+  position: relative;
+}
+
+.mission input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  font-size: 22px;
+  font-weight: 900;
+  left: 3px;
+  top: -3px;
+}
+
+textarea, input[type="text"], input[type="email"] {
+  width: 100%;
+  padding: 13px;
+  border: 2px solid #b8a6d8;
+  border-radius: 13px;
+  background: #fff;
+  color: var(--ink);
+  margin-top: 8px;
+  outline: none;
+}
+
+textarea:focus, input:focus {
+  border-color: #8857d8;
+  box-shadow: 0 0 0 3px #e6d9ff;
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.map-link {
+  display: inline-block;
+  margin: 7px 5px 5px 0;
+  padding: 9px 14px;
+  border-radius: 30px;
+  background: white;
+  border: 2px solid var(--ink);
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: .2s;
+}
+
+.map-link:hover {
+  transform: translateY(-3px);
+  background: var(--yellow);
+}
+
+.compliment {
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.compliment-text {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.2;
+  max-width: 600px;
+}
+
+button.main-btn {
+  background: var(--pink);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  padding: 13px 22px;
+  font-weight: 900;
+  box-shadow: 4px 5px 0 var(--ink);
+  transition: .2s;
+}
+
+button.main-btn:hover {
+  transform: translate(2px, 3px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.quote {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.choice-list {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.choice {
+  display: block;
+  padding: 16px;
+  border: 3px solid var(--ink);
+  border-radius: 17px;
+  background: white;
+  font-weight: 900;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.choice input { margin-right: 10px; accent-color: #8b5bd6; }
+
+.choice:has(input:checked) {
+  background: var(--green);
+  transform: scale(1.02);
+}
+
+.send-area {
+  text-align: center;
+  padding: 25px 0 50px;
+}
+
+.send-btn {
+  font-size: 1.2rem;
+  padding: 17px 30px !important;
+  background: var(--green) !important;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: .7;
+  font-size: .85rem;
+}
+
+.sticker {
+  display: inline-block;
+  background: var(--yellow);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 900;
+  transform: rotate(2deg);
+}
+
+#successMessage {
+  display: none;
+  background: var(--green);
+  padding: 20px;
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  font-weight: 900;
+  margin-top: 20px;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 20;
+  animation: sparkle 1s forwards;
+  font-size: 25px;
+}
+
+@keyframes sparkle {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-90px) scale(1.8) rotate(90deg); }
+}
+
+@media (max-width: 600px) {
+  .hero { padding-top: 35px; }
+  .card { padding: 19px; }
+  .frog { font-size: 95px; }
+  .compliment-text { font-size: 1.4rem; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero container">
+  <span class="tag">UN'OPERAZIONE ALTAMENTE SCIENTIFICA</span>
+
+  <h1>La grande riabilitazione sociale di Ismael</h1>
+
+  <p>
+    Un progetto segreto. Una rana. Una ragazza da riportare
+    alla vita sociale. E una quantità discutibile di complimenti.
+  </p>
+
+  <div class="frog-area">
+    <span class="floating f1">★</span>
+    <span class="floating f2">♡</span>
+    <span class="floating f3">✿</span>
+    <div class="frog" onclick="frogMessage()" title="Cliccami, Zahra!">🐸</div>
+  </div>
+
+  <span class="sticker">Direttore del progetto: Ismael</span>
+</header>
+
+<main class="container">
+
+  <section class="card pink">
+    <h2>Benvenuta, Baby!</h2>
+    <p>
+      Cara Zahra, sei stata selezionata per un esperimento sociale
+      di fondamentale importanza. Il tuo compito è uscire, esplorare,
+      divertirti, conoscere il mondo e ricordarti che esisti anche
+      al di fuori della tua stanza.
+    </p>
+    <p>
+      Ismael sarà il tuo supervisore, consulente emotivo e collega
+      di avventure. È una rana molto qualificata. Ha almeno tre
+      esperienze professionali nel settore degli anfibi.
+    </p>
+    <p>
+      <strong>Attenzione:</strong> alcune missioni potrebbero richiedere
+      qualche spicciolo. Non è necessario spendere molto: la maggior
+      parte delle attività è gratuita. Non comprare nulla per forza.
+    </p>
+  </section>
+
+  <section class="card yellow">
+    <h2>Il tuo livello di riabilitazione</h2>
+    <p>Ogni missione completata aumenta il tuo prestigio sociale.</p>
+
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-text" id="progressText">0 missioni su 6 completate</div>
+  </section>
+
+  <section class="card purple compliment">
+    <span class="sticker">PAUSA OBBLIGATORIA PER L'AUTOSTIMA</span>
+    <div class="compliment-text" id="complimentText">
+      Zahra, hai una mente artistica e un modo tutto tuo di vedere il mondo.
+    </div>
+    <button type="button" class="main-btn" onclick="newCompliment()">
+      Un altro complimento, grazie
+    </button>
+  </section>
+
+  <form id="missionForm"
+        action="https://formspree.io/f/xoeeprzg"
+        method="POST"
+        enctype="multipart/form-data">
+
+    <input type="hidden" name="_subject" value="Ismael ha ricevuto un rapporto da Zahra!">
+    <input type="hidden" name="progetto" value="La grande riabilitazione sociale di Ismael">
+    <input type="hidden" name="rapporto_missioni" id="progressReport">
+    <input type="hidden" name="data_invio" id="submissionDate">
+
+    <section class="card blue mission">
+      <span class="mission-number">MISSIONE 01</span>
+      <h2>La prova del mondo esterno</h2>
+      <p>
+        Esci e fai una passeggiata. Niente fretta. Osserva le persone,
+        le vetrine, i palazzi, i dettagli che normalmente non noti.
+        Ascolta una canzone che ti piace e goditi il tragitto.
+      </p>
+      <p><strong>Obiettivo:</strong> camminare almeno 20 minuti.</p>
+
+      <label class="check">
+        <input type="checkbox" name="missione_completata[]" value="Passeggiata">
+        Missione completata!
+      </label>
+
+      <label>Che cosa hai visto? Raccontamelo:</label>
+      <textarea name="racconto_passeggiata" placeholder="Ho visto..."></textarea>
+    </section>
+
+    <section class="card green mission">
+      <span class="mission-number">MISSIONE 02</span>
+      <h2>La collezionista di momenti</h2>
+      <p>
+        Scatta tre fotografie:
+      </p>
+      <p>
+        1. Qualcosa di bello.<br>
+        2. Qualcosa di buffo o insolito.<br>
+        3. Qualcosa che rappresenti il tuo umore.
+      </p>
+      <p>
+        Puoi fotografare Ismael, un edificio, un dettaglio,
+        un paesaggio o qualsiasi cosa ti colpisca.
+      </p>
+
+      <label class="check">
+        <input type="checkbox" name="missione_completata[]" value="Fotografie">
+        Missione completata!
+      </label>
+
+      <label>Carica qui le tue fotografie:</label>
+      <input type="file" name="fotografie" accept="image/*" multiple>
+
+      <p class="small">
+        Se il tuo piano Formspree non permette gli allegati,
+        puoi inviare le foto separatamente e scrivermi qui il racconto.
+      </p>
+
+      <label>Qual è la fotografia che preferisci e perché?</label>
+      <textarea name="storia_fotografie" placeholder="La mia preferita è..."></textarea>
+    </section>
+
+    <section class="card orange mission">
+      <span class="mission-number">MISSIONE 03</span>
+      <h2>La sfida del coraggio sociale</h2>
+      <p>
+        Oggi prova a scambiare qualche parola con una persona nuova.
+        Può essere una domanda semplice, un complimento sincero
+        o una breve conversazione.
+      </p>
+      <p>
+        <strong>Missione extra:</strong> se ti senti a tuo agio,
+        chiedi a qualcuno di scattare una foto insieme a te e Ismael.
+        Naturalmente solo se la persona è d'accordo.
+      </p>
+      <p>
+        Non devi dimostrare niente a nessuno. Anche un piccolo
+        tentativo conta.
+      </p>
+
+      <label class="check">
+        <input type="checkbox" name="missione_completata[]" value="Coraggio sociale">
+        Missione completata!
+      </label>
+
+      <label>Hai parlato con qualcuno? Com'è andata?</label>
+      <textarea name="incontro_sociale" placeholder="Ho incontrato..."></textarea>
+    </section>
+
+    <section class="card pink mission">
+      <span class="mission-number">MISSIONE 04</span>
+      <h2>La mente dell'artista</h2>
+      <p>
+        Fermati in un posto tranquillo. Leggi qualcosa, disegna,
+        scrivi, fai una fotografia artistica o semplicemente
+        lascia vagare la mente.
+      </p>
+      <p>
+        Voglio che tu faccia qualcosa che non abbia uno scopo
+        produttivo. Non tutto deve servire a qualcosa.
+      </p>
+
+      <label class="check">
+        <input type="checkbox" name="missione_completata[]" value="Mente artistica">
+        Missione completata!
+      </label>
+
+      <label>Che cosa hai creato o pensato?</label>
+      <textarea name="creativita" placeholder="Oggi mi è venuta in mente..."></textarea>
+    </section>
+
+    <section class="card yellow mission">
+      <span class="mission-number">MISSIONE 05</span>
+      <h2>Alla ricerca di Ismael</h2>
+      <p>
+        Ismael ha bisogno di scoprire nuovi territori.
+        Ecco alcuni luoghi da esplorare a Liegi.
+        Scegline almeno uno, oppure visita quelli che preferisci.
+      </p>
+
+      <h3>1. Place du Marché</h3>
+      <p>
+        Una piazza storica, perfetta per osservare la città
+        e fare qualche fotografia.
+      </p>
+      <p class="small">Place du Marché, 4000 Liège</p>
+      <a class="map-link" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Place+du+Marche+Liege">
+        Apri la mappa
+      </a>
+
+      <h3>2. Montagne de Bueren</h3>
+      <p>
+        Una scalinata famosa con 374 gradini. Una piccola
+        impresa atletica per Ismael. Puoi fermarti quando vuoi.
+      </p>
+      <p class="small">Montagne de Bueren, 4000 Liège</p>
+      <a class="map-link" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Montagne+de+Bueren+Liege">
+        Apri la mappa
+      </a>
+
+      <h3>3. Coteaux de la Citadelle</h3>
+      <p>
+        Percorsi verdi, scalinate e scorci panoramici.
+        Un posto per respirare e guardare la città dall'alto.
+      </p>
+      <p class="small">Rue du Palais, 4000 Liège</p>
+      <a class="map-link" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Coteaux+de+la+Citadelle+Liege">
+        Apri la mappa
+      </a>
+
+      <h3>4. Parc de la Boverie</h3>
+      <p>
+        Un parco vicino alla Mosa, ideale per una passeggiata,
+        una pausa e qualche fotografia.
+      </p>
+      <p class="small">Allée Frédéric Chopin, 4020 Liège</p>
+      <a class="map-link" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Parc+de+la+Boverie+Liege">
+        Apri la mappa
+      </a>
+
+      <label class="check">
+        <input type="checkbox" name="missione_completata[]" value="Esplorazione di Liegi">
+        Missione completata!
+      </label>
+
+      <label>Quale luogo hai visitato? Che cosa ti è piaciuto?</label>
+      <textarea name="luoghi_visitati" placeholder="Sono stata a..."></textarea>
+    </section>
+
+    <section class="card purple mission">
+      <span class="mission-number">MISSIONE 06</span>
+      <h2>Il torneo di Ismael</h2>
+      <p>
+        Gioca a scacchi, a un gioco da tavolo oppure prova
+        qualcosa che non hai mai fatto.
+      </p>
+      <p>
+        Se trovi qualcuno con cui giocare, ancora meglio.
+        Se perdi, puoi sempre dare la colpa alla rana.
+      </p>
+
+      <label class="check">
+        <input type="checkbox" name="missione_completata[]" value="Gioco o scacchi">
+        Missione completata!
+      </label>
+
+      <label>Che cosa hai giocato? Hai vinto?</label>
+      <textarea name="gioco" placeholder="Il risultato del torneo è..."></textarea>
+    </section>
+
+    <section class="card blue">
+      <h2>Il registro segreto di Ismael</h2>
+      <p>
+        Puoi lasciarmi qui un messaggio, raccontarmi com'è andata
+        la giornata, mandarmi un pensiero o semplicemente scrivere
+        qualcosa che vuoi condividere con me.
+      </p>
+
+      <label for="email">La tua email (facoltativa):</label>
+      <input type="email" id="email" name="email" placeholder="La tua email">
+
+      <label for="finalMessage">Il tuo messaggio per me:</label>
+      <textarea id="finalMessage" name="messaggio_per_naziha"
+                placeholder="Cara Naziha..."></textarea>
+    </section>
+
+    <section class="card pink">
+      <span class="sticker">ULTIMA MISSIONE</span>
+      <h2>Una lettera per te</h2>
+
+      <p>
+        Cara Zahra,
+      </p>
+
+      <p>
+        Se sei arrivata fin qui, significa che Ismael ha svolto
+        un lavoro eccellente. Oppure che hai cliccato tutto
+        per curiosità. In entrambi i casi, sono soddisfatta.
+      </p>
+
+      <p>
+        Volevo dirti una cosa che forse non dico abbastanza:
+        sono felice che tu sia entrata nella mia vita.
+        Sei una persona creativa, particolare, piena di sfumature.
+        Hai un modo tuo di guardare le cose e spero che tu non
+        perda mai quella parte di te.
+      </p>
+
+      <p>
+        Voglio anche parlarti di una cosa a cui tengo molto:
+        la famiglia che si sceglie.
+      </p>
+
+      <p>
+        Per me la famiglia non è soltanto una questione di DNA.
+        È fatta di persone che decidono di esserci, che si
+        rispettano, si proteggono, si ascoltano e si vogliono bene.
+        Persone con cui puoi essere te stessa, anche nei giorni
+        in cui non sei al massimo.
+      </p>
+
+      <p>
+        Non deve essere una famiglia perfetta. Ci saranno
+        incomprensioni, giornate strane, risate stupide,
+        conversazioni infinite e momenti in cui non sapremo
+        nemmeno cosa dire. Ma ci sarà sincerità.
+      </p>
+
+      <p>
+        Il primo membro della mia famiglia scelta è stato Jack,
+        il mio gatto. E mi piacerebbe che tu fossi la seconda.
+      </p>
+
+      <p>
+        Non è una richiesta di promessa, né un obbligo.
+        Non devi rispondere per farmi felice. Vorrei soltanto
+        sapere come ti senti e se anche tu desideri costruire
+        questo piccolo legame con me.
+      </p>
+
+      <p>
+        Ti voglio bene, pomodoro frizzante.
+      </p>
+
+      <p>
+        Con affetto,<br>
+        Naziha
+      </p>
+
+      <h3>Allora, Zahra... vuoi far parte della mia famiglia scelta?</h3>
+
+      <div class="choice-list">
+        <label class="choice">
+          <input type="radio" name="risposta_lettera" value="Sì" required>
+          Sì. Voglio farne parte.
+        </label>
+
+        <label class="choice">
+          <input type="radio" name="risposta_lettera" value="No">
+          No.
+        </label>
+
+        <label class="choice">
+          <input type="radio" name="risposta_lettera" value="Ho bisogno di tempo">
+          Ho bisogno di tempo.
+        </label>
+      </div>
+
+      <label>Vuoi aggiungere qualcosa alla tua risposta?</label>
+      <textarea name="commento_risposta"
+                placeholder="Vorrei dirti che..."></textarea>
+    </section>
+
+    <section class="send-area">
+      <p class="quote">
+        «Non serve fare grandi cose. A volte basta esserci,
+        con un po' di coraggio e una rana sotto il braccio.»
+      </p>
+
+      <p>
+        Quando hai finito, premi il pulsante qui sotto.
+        Il tuo rapporto arriverà direttamente a Naziha.
+      </p>
+
+      <button class="main-btn send-btn" type="submit" id="sendButton">
+        Invia tutto a Naziha!
+      </button>
+
+      <div id="successMessage">
+        Il rapporto è stato inviato! Ismael è fiero di te.
+      </div>
+    </section>
+
+  </form>
+</main>
+
+<footer>
+  Progetto segreto di Ismael © 2026<br>
+  Creato con affetto, una rana e una quantità esagerata di entusiasmo.
+</footer>
+
+<script>
+const compliments = [
+  "Zahra, hai una mente artistica e un modo tutto tuo di vedere il mondo.",
+  "Sei una persona interessante. E no, non è un complimento di circostanza.",
+  "La tua creatività è una cosa preziosa. Non lasciarla in un cassetto.",
+  "Hai il diritto di occupare spazio, di parlare, di ridere e di essere te stessa.",
+  "Il mondo sarebbe un posto un po' più noioso senza le tue stranezze.",
+  "Non devi essere perfetta per essere una persona meravigliosa.",
+  "Hai una sensibilità che merita di essere coltivata, non nascosta.",
+  "Sei più coraggiosa di quanto probabilmente ti concedi di pensare.",
+  "Ismael ha controllato il tuo curriculum: sei ufficialmente una persona fantastica.",
+  "Non dimenticare che anche tu meriti la stessa gentilezza che dai agli altri.",
+  "Hai un universo nella testa. Ogni tanto apri le finestre e lascialo uscire.",
+  "Sei un'opera d'arte in corso. E le opere d'arte non hanno bisogno di fretta."
+];
+
+let complimentIndex = 0;
+
+function newCompliment() {
+  complimentIndex = (complimentIndex + 1) % compliments.length;
+  document.getElementById("complimentText").textContent =
+    compliments[complimentIndex];
+  makeSparkles();
+}
+
+function frogMessage() {
+  const messages = [
+    "Ciao Zahra! Sono Ismael. Andiamo a conquistare il mondo.",
+    "Rana presente. Motivazione discutibile, ma presente.",
+    "Non dimenticare di bere acqua. Ordine del direttore.",
+    "Sei pronta? Io sono pronto. Anche se non ho le scarpe.",
+    "Una missione alla volta, Baby!"
+  ];
+  alert(messages[Math.floor(Math.random() * messages.length)]);
+}
+
+function makeSparkles() {
+  const symbols = ["★", "♡", "✿", "✦", "♥"];
+  for (let i = 0; i < 12; i++) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = (50 + Math.random() * 40) + "vh";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1100);
+  }
+}
+
+const checkboxes = document.querySelectorAll(
+  '.mission input[type="checkbox"]'
+);
+
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+function updateProgress() {
+  const total = checkboxes.length;
+  const completed = [...checkboxes].filter(c => c.checked).length;
+  const percentage = (completed / total) * 100;
+
+  progressBar.style.width = percentage + "%";
+  progressText.textContent =
+    completed + " missioni su " + total + " completate";
+
+  localStorage.setItem("ismael_missions",
+    JSON.stringify([...checkboxes].map(c => c.checked)));
+}
+
+const savedProgress = JSON.parse(
+  localStorage.getItem("ismael_missions") || "[]"
+);
+
+checkboxes.forEach((checkbox, index) => {
+  checkbox.checked = savedProgress[index] || false;
+  checkbox.addEventListener("change", updateProgress);
+});
+
+updateProgress();
+
+document.getElementById("missionForm").addEventListener("submit", function(e) {
+  const selected = [...document.querySelectorAll(
+    'input[name="risposta_lettera"]:checked'
+  )];
+
+  if (selected.length === 0) {
+    e.preventDefault();
+    alert("Zahra, devi scegliere una risposta alla lettera!");
+    return;
+  }
+
+  const completed = [...checkboxes]
+    .filter(c => c.checked)
+    .map(c => c.value);
+
+  document.getElementById("progressReport").value =
+    completed.length
+      ? completed.join(", ")
+      : "Nessuna missione contrassegnata come completata.";
+
+  document.getElementById("submissionDate").value =
+    new Date().toLocaleString("it-IT");
+
+  const button = document.getElementById("sendButton");
+  button.textContent = "Invio in corso...";
+  button.disabled = true;
+});
+</script>
+
+</body>
+</html>
