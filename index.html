@@ -1,896 +1,764 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La grande riabilitazione sociale di Ismael</title>
-
+<title>Ismael's Social Adventure</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
 
-:root {
-  --pink: #ff78ad;
-  --purple: #a78bfa;
-  --yellow: #ffe66d;
-  --green: #a8e6a3;
-  --blue: #8edbff;
-  --orange: #ffad70;
-  --ink: #34264d;
-  --paper: #fffaf1;
+:root{
+ --pink:#ff83b5;--purple:#b39aff;--yellow:#ffe66d;
+ --green:#b8edaa;--blue:#9be3ff;--orange:#ffbd85;
+ --ink:#38264d;--white:#fffdf8;
 }
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: 'Nunito', sans-serif;
-  color: var(--ink);
-  background:
-    radial-gradient(circle at 10% 10%, #ffe0ed 0 8%, transparent 25%),
-    radial-gradient(circle at 90% 20%, #d9ceff 0 8%, transparent 25%),
-    radial-gradient(circle at 80% 90%, #d5f5d2 0 8%, transparent 25%),
-    #fff8ed;
-  overflow-x: hidden;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;color:var(--ink);font-family:Nunito,sans-serif;
+ background:
+ radial-gradient(circle at 5% 10%,#ffdbe9,transparent 25%),
+ radial-gradient(circle at 95% 30%,#ded4ff,transparent 25%),
+ radial-gradient(circle at 15% 85%,#d9f5d2,transparent 25%),
+ #fff9ef;
+ overflow-x:hidden;
 }
-
-h1, h2, h3, .display {
-  font-family: 'Baloo 2', cursive;
+h1,h2,h3{font-family:"Baloo 2",cursive}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(900px,calc(100% - 30px));margin:auto}
+.hero{text-align:center;padding:45px 10px 25px}
+.tag{
+ display:inline-block;background:var(--yellow);padding:8px 17px;
+ border:2px solid var(--ink);border-radius:30px;
+ font-weight:900;box-shadow:3px 4px var(--ink);transform:rotate(-2deg)
 }
-
-button, input, textarea { font: inherit; }
-
-button { cursor: pointer; }
-
-a { color: #7650c9; font-weight: 900; }
-
-.container {
-  width: min(100% - 30px, 850px);
-  margin: auto;
+h1{
+ font-size:clamp(2.8rem,9vw,5.5rem);line-height:.95;
+ color:#8156c8;text-shadow:4px 4px #ffd3e5;margin:25px 0 15px
 }
-
-.hero {
-  text-align: center;
-  padding: 55px 15px 35px;
-  position: relative;
+.hero p{font-size:1.12rem;line-height:1.7;max-width:650px;margin:auto}
+.frog-stage{height:205px;position:relative;display:grid;place-items:center}
+.frog{
+ font-size:120px;display:inline-block;cursor:pointer;
+ animation:bounce 2s infinite ease-in-out;
+ filter:drop-shadow(0 9px 0 #b8e9aa)
 }
-
-.tag {
-  display: inline-block;
-  background: var(--yellow);
-  padding: 8px 18px;
-  border-radius: 30px;
-  font-weight: 900;
-  transform: rotate(-2deg);
-  box-shadow: 3px 4px 0 var(--ink);
+@keyframes bounce{
+ 0%,100%{transform:translateY(0) rotate(-5deg)}
+ 50%{transform:translateY(-19px) rotate(5deg)}
 }
-
-.hero h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  line-height: .98;
-  margin: 25px auto 15px;
-  max-width: 750px;
-  color: #7c52c8;
-  text-shadow: 3px 3px 0 #ffd5e6;
+.frog:hover{animation:wiggle .4s infinite alternate}
+@keyframes wiggle{from{transform:rotate(-15deg)}to{transform:rotate(15deg)}}
+.float{
+ position:absolute;font-size:28px;animation:float 3s infinite ease-in-out
 }
-
-.hero p {
-  max-width: 600px;
-  margin: 12px auto;
-  font-size: 1.1rem;
-  line-height: 1.7;
+.float:nth-child(1){left:20%;top:20px}
+.float:nth-child(2){right:20%;top:30px;animation-delay:.7s}
+.float:nth-child(3){left:28%;bottom:10px;animation-delay:1.2s}
+@keyframes float{50%{transform:translateY(-17px) rotate(15deg)}}
+.card{
+ background:white;border:3px solid var(--ink);border-radius:25px;
+ padding:24px;margin:23px 0;box-shadow:6px 7px var(--ink)
 }
-
-.frog-area {
-  margin: 20px auto;
-  height: 190px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.pink{background:#ffe3ed}.yellow{background:#fff2ad}
+.green{background:#e0f8d9}.blue{background:#e0f5ff}
+.purple{background:#eee7ff}.orange{background:#ffe7d1}
+h2{font-size:2rem;line-height:1.1;margin:0 0 12px}
+h3{font-size:1.4rem;margin:17px 0 5px}
+p{line-height:1.65}
+.small{font-size:.88rem;opacity:.8}
+.sticker{
+ display:inline-block;background:var(--yellow);padding:5px 12px;
+ border-radius:20px;font-weight:900;transform:rotate(-2deg)
 }
-
-.frog {
-  font-size: 115px;
-  display: inline-block;
-  animation: frogBounce 2s ease-in-out infinite;
-  filter: drop-shadow(0 10px 0 #b4e7a9);
-  cursor: pointer;
+.progress-shell{
+ background:white;border:3px solid var(--ink);
+ border-radius:30px;padding:6px;margin:18px 0
 }
-
-.frog:hover { animation: frogDance .5s infinite alternate; }
-
-@keyframes frogBounce {
-  0%,100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-17px) rotate(4deg); }
+.progress-bar{
+ height:20px;width:0;border-radius:30px;
+ background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue),var(--green));
+ transition:width .4s
 }
-
-@keyframes frogDance {
-  from { transform: rotate(-15deg) scale(1.05); }
-  to { transform: rotate(15deg) scale(1.15); }
+.progress-text{text-align:center;font-weight:900}
+.mission{position:relative;transition:transform .2s}
+.mission:hover{transform:translateY(-2px)}
+.number{
+ display:inline-block;padding:5px 13px;border-radius:20px;
+ background:var(--yellow);border:2px solid var(--ink);
+ font-weight:900;margin-bottom:12px
 }
-
-.floating {
-  position: absolute;
-  font-size: 28px;
-  animation: floaty 3s ease-in-out infinite;
+.checkline{
+ display:flex;align-items:center;gap:12px;
+ font-weight:900;margin:18px 0 10px;cursor:pointer
 }
-
-.f1 { left: 20%; top: 10px; }
-.f2 { right: 20%; top: 25px; animation-delay: .7s; }
-.f3 { left: 27%; bottom: 5px; animation-delay: 1.2s; }
-
-@keyframes floaty {
-  0%,100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-15px) rotate(15deg); }
+.checkline input{
+ appearance:none;width:27px;height:27px;flex-shrink:0;
+ border:3px solid var(--ink);border-radius:8px;background:white
 }
-
-.card {
-  background: white;
-  border: 3px solid var(--ink);
-  border-radius: 25px;
-  padding: 25px;
-  margin: 22px 0;
-  box-shadow: 7px 7px 0 var(--ink);
+.checkline input:checked{background:var(--green);position:relative}
+.checkline input:checked:after{
+ content:"✓";position:absolute;left:3px;top:-5px;font-size:23px
 }
-
-.card.pink { background: #ffe1ed; }
-.card.yellow { background: #fff1a8; }
-.card.green { background: #dff7d9; }
-.card.blue { background: #dff4ff; }
-.card.purple { background: #eee5ff; }
-.card.orange { background: #ffe4cc; }
-
-h2 {
-  font-size: 2rem;
-  margin: 0 0 12px;
-  line-height: 1.1;
+textarea,input[type=text]{
+ width:100%;padding:13px;border:2px solid #bca8db;
+ border-radius:13px;background:white;color:var(--ink);margin:8px 0;
+ outline:none
 }
-
-h3 {
-  font-size: 1.45rem;
-  margin: 0 0 8px;
+textarea{min-height:85px;resize:vertical}
+textarea:focus,input:focus{border-color:#8c5ed2}
+label.field{display:block;font-weight:900;margin-top:15px}
+.btn{
+ display:inline-block;border:3px solid var(--ink);border-radius:30px;
+ background:var(--pink);padding:12px 19px;font-weight:900;
+ box-shadow:4px 5px var(--ink);color:var(--ink);
+ transition:.2s;text-decoration:none
 }
-
-p { line-height: 1.65; }
-
-.small {
-  font-size: .9rem;
-  opacity: .8;
+.btn:hover{transform:translate(2px,3px);box-shadow:2px 2px var(--ink)}
+.btn.green-btn{background:var(--green)}
+.btn.yellow-btn{background:var(--yellow)}
+.btn.blue-btn{background:var(--blue)}
+.btn.small-btn{font-size:.9rem;padding:9px 14px}
+.action-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:15px}
+.maplink{
+ display:inline-block;background:white;border:2px solid var(--ink);
+ border-radius:30px;padding:9px 13px;margin:5px 4px 5px 0;
+ text-decoration:none;font-weight:900;color:#6745a8;
+ box-shadow:3px 3px var(--ink)
 }
-
-.progress-wrap {
-  background: white;
-  border: 3px solid var(--ink);
-  border-radius: 30px;
-  padding: 7px;
-  margin: 25px 0;
+.maplink:hover{background:var(--yellow)}
+.compliment-box{
+ text-align:center;min-height:170px;display:flex;
+ flex-direction:column;align-items:center;justify-content:center
 }
-
-.progress-bar {
-  height: 20px;
-  width: 0%;
-  border-radius: 20px;
-  background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue), var(--green));
-  transition: width .5s ease;
+.compliment{
+ font-family:"Baloo 2",cursive;font-size:1.65rem;
+ line-height:1.2;font-weight:800;max-width:650px;margin:15px auto
 }
-
-.progress-text {
-  text-align: center;
-  font-weight: 900;
-  margin-top: 8px;
+.compliment-mini{
+ background:#fff;border:2px dashed #a58ad8;
+ border-radius:17px;padding:13px;margin:18px 0;
+ font-weight:800;text-align:center
 }
-
-.mission {
-  position: relative;
-  transition: transform .2s;
+.quote{text-align:center;font-family:"Baloo 2",cursive;font-size:1.25rem}
+.letter{font-size:1.03rem;line-height:1.9}
+.choice{
+ display:block;padding:15px;background:white;border:3px solid var(--ink);
+ border-radius:16px;margin:12px 0;font-weight:900;cursor:pointer
 }
-
-.mission:hover { transform: translateY(-3px) rotate(-.3deg); }
-
-.mission-number {
-  display: inline-block;
-  background: var(--yellow);
-  border: 2px solid var(--ink);
-  padding: 5px 13px;
-  border-radius: 20px;
-  font-weight: 900;
-  margin-bottom: 12px;
+.choice:has(input:checked){background:var(--green)}
+.choice input{accent-color:#8758cf;margin-right:10px}
+.final{text-align:center;padding:30px 0 60px}
+#status{
+ display:none;padding:15px;background:var(--green);
+ border:2px solid var(--ink);border-radius:15px;margin-top:20px;
+ font-weight:900
 }
-
-.mission label.check {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  font-weight: 900;
-  margin: 18px 0 5px;
+footer{text-align:center;padding:20px;font-size:.85rem;opacity:.7}
+.spark{
+ position:fixed;z-index:50;pointer-events:none;
+ animation:spark 1s forwards;font-size:25px
 }
-
-.mission input[type="checkbox"] {
-  appearance: none;
-  width: 27px;
-  height: 27px;
-  flex-shrink: 0;
-  border: 3px solid var(--ink);
-  border-radius: 8px;
-  background: white;
-  cursor: pointer;
+@keyframes spark{
+ to{transform:translateY(-90px) rotate(90deg) scale(1.8);opacity:0}
 }
-
-.mission input[type="checkbox"]:checked {
-  background: var(--green);
-  position: relative;
-}
-
-.mission input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  font-size: 22px;
-  font-weight: 900;
-  left: 3px;
-  top: -3px;
-}
-
-textarea, input[type="text"], input[type="email"] {
-  width: 100%;
-  padding: 13px;
-  border: 2px solid #b8a6d8;
-  border-radius: 13px;
-  background: #fff;
-  color: var(--ink);
-  margin-top: 8px;
-  outline: none;
-}
-
-textarea:focus, input:focus {
-  border-color: #8857d8;
-  box-shadow: 0 0 0 3px #e6d9ff;
-}
-
-textarea {
-  min-height: 85px;
-  resize: vertical;
-}
-
-.map-link {
-  display: inline-block;
-  margin: 7px 5px 5px 0;
-  padding: 9px 14px;
-  border-radius: 30px;
-  background: white;
-  border: 2px solid var(--ink);
-  text-decoration: none;
-  box-shadow: 3px 3px 0 var(--ink);
-  transition: .2s;
-}
-
-.map-link:hover {
-  transform: translateY(-3px);
-  background: var(--yellow);
-}
-
-.compliment {
-  text-align: center;
-  min-height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.compliment-text {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.7rem;
-  font-weight: 800;
-  line-height: 1.2;
-  max-width: 600px;
-}
-
-button.main-btn {
-  background: var(--pink);
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  border-radius: 30px;
-  padding: 13px 22px;
-  font-weight: 900;
-  box-shadow: 4px 5px 0 var(--ink);
-  transition: .2s;
-}
-
-button.main-btn:hover {
-  transform: translate(2px, 3px);
-  box-shadow: 2px 2px 0 var(--ink);
-}
-
-.quote {
-  font-family: 'Baloo 2', cursive;
-  font-size: 1.3rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.choice-list {
-  display: grid;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.choice {
-  display: block;
-  padding: 16px;
-  border: 3px solid var(--ink);
-  border-radius: 17px;
-  background: white;
-  font-weight: 900;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.choice input { margin-right: 10px; accent-color: #8b5bd6; }
-
-.choice:has(input:checked) {
-  background: var(--green);
-  transform: scale(1.02);
-}
-
-.send-area {
-  text-align: center;
-  padding: 25px 0 50px;
-}
-
-.send-btn {
-  font-size: 1.2rem;
-  padding: 17px 30px !important;
-  background: var(--green) !important;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  opacity: .7;
-  font-size: .85rem;
-}
-
-.sticker {
-  display: inline-block;
-  background: var(--yellow);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 900;
-  transform: rotate(2deg);
-}
-
-#successMessage {
-  display: none;
-  background: var(--green);
-  padding: 20px;
-  border: 3px solid var(--ink);
-  border-radius: 20px;
-  font-weight: 900;
-  margin-top: 20px;
-}
-
-.sparkle {
-  position: fixed;
-  pointer-events: none;
-  z-index: 20;
-  animation: sparkle 1s forwards;
-  font-size: 25px;
-}
-
-@keyframes sparkle {
-  from { opacity: 1; transform: translateY(0) scale(1); }
-  to { opacity: 0; transform: translateY(-90px) scale(1.8) rotate(90deg); }
-}
-
-@media (max-width: 600px) {
-  .hero { padding-top: 35px; }
-  .card { padding: 19px; }
-  .frog { font-size: 95px; }
-  .compliment-text { font-size: 1.4rem; }
+@media(max-width:600px){
+ .card{padding:19px}.frog{font-size:100px}
+ .compliment{font-size:1.4rem}
+ .action-row .btn{width:100%;text-align:center}
 }
 </style>
 </head>
-
 <body>
 
 <header class="hero container">
-  <span class="tag">UN'OPERAZIONE ALTAMENTE SCIENTIFICA</span>
-
-  <h1>La grande riabilitazione sociale di Ismael</h1>
-
-  <p>
-    Un progetto segreto. Una rana. Una ragazza da riportare
-    alla vita sociale. E una quantità discutibile di complimenti.
-  </p>
-
-  <div class="frog-area">
-    <span class="floating f1">★</span>
-    <span class="floating f2">♡</span>
-    <span class="floating f3">✿</span>
-    <div class="frog" onclick="frogMessage()" title="Cliccami, Zahra!">🐸</div>
-  </div>
-
-  <span class="sticker">Direttore del progetto: Ismael</span>
+ <span class="tag">PROGETTO TOP SECRET · 03.11.2026</span>
+ <h1>La grande riabilitazione sociale di Ismael</h1>
+ <p>
+  Una rana. Una missione. Una ragazza meravigliosa.
+  Un pomeriggio per conquistare Liegi.
+ </p>
+ <div class="frog-stage">
+  <span class="float">★</span><span class="float">♡</span>
+  <span class="float">✿</span>
+  <div class="frog" onclick="frogTalk()">🐸</div>
+ </div>
+ <span class="sticker">Direttore generale: Ismael</span>
 </header>
 
 <main class="container">
 
-  <section class="card pink">
-    <h2>Benvenuta, Baby!</h2>
-    <p>
-      Cara Zahra, sei stata selezionata per un esperimento sociale
-      di fondamentale importanza. Il tuo compito è uscire, esplorare,
-      divertirti, conoscere il mondo e ricordarti che esisti anche
-      al di fuori della tua stanza.
-    </p>
-    <p>
-      Ismael sarà il tuo supervisore, consulente emotivo e collega
-      di avventure. È una rana molto qualificata. Ha almeno tre
-      esperienze professionali nel settore degli anfibi.
-    </p>
-    <p>
-      <strong>Attenzione:</strong> alcune missioni potrebbero richiedere
-      qualche spicciolo. Non è necessario spendere molto: la maggior
-      parte delle attività è gratuita. Non comprare nulla per forza.
-    </p>
-  </section>
+<section class="card pink">
+ <h2>Benvenuta, Baby!</h2>
+ <p>
+  Cara Zahra, Ismael ha convocato una riunione d'emergenza.
+  È arrivato alla conclusione che la sua vita sociale è praticamente
+  inesistente. Passa le giornate in borsa, accompagna sempre la stessa
+  umana e conosce pochissime persone.
+ </p>
+ <p>
+  È arrivato il momento di cambiare le cose.
+  Vuole visitare Liegi, conoscere nuovi esseri umani, fare fotografie,
+  ascoltare musica e magari giocare a scacchi.
+ </p>
+ <p>
+  Tu sei stata scelta come sua accompagnatrice ufficiale.
+  Non è una richiesta: è una promozione.
+ </p>
+ <p>
+  <strong>Orario:</strong> dalle 15:00 alle 18:00.
+  Se l'avventura è bella, si può continuare!
+ </p>
+ <div class="compliment-mini">
+  Zahra, prima di iniziare: sei una persona preziosa.
+  Non devi dimostrare niente. Questo pomeriggio è anche per te.
+ </div>
+</section>
 
-  <section class="card yellow">
-    <h2>Il tuo livello di riabilitazione</h2>
-    <p>Ogni missione completata aumenta il tuo prestigio sociale.</p>
+<section class="card yellow">
+ <h2>Il tuo livello di avventura</h2>
+ <p>Ogni missione completata avvicina Ismael alla sua nuova vita sociale.</p>
+ <div class="progress-shell"><div class="progress-bar" id="bar"></div></div>
+ <div class="progress-text" id="progressText">0 / 6 missioni completate</div>
+</section>
 
-    <div class="progress-wrap">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-    <div class="progress-text" id="progressText">0 missioni su 6 completate</div>
-  </section>
+<section class="card purple compliment-box">
+ <span class="sticker">MESSAGGIO SPECIALE PER TE</span>
+ <div class="compliment" id="compliment">
+  Baby, hai un modo tutto tuo di vedere il mondo. Non perderlo mai.
+ </div>
+ <button class="btn yellow-btn" onclick="newCompliment()">Un altro complimento!</button>
+</section>
 
-  <section class="card purple compliment">
-    <span class="sticker">PAUSA OBBLIGATORIA PER L'AUTOSTIMA</span>
-    <div class="compliment-text" id="complimentText">
-      Zahra, hai una mente artistica e un modo tutto tuo di vedere il mondo.
-    </div>
-    <button type="button" class="main-btn" onclick="newCompliment()">
-      Un altro complimento, grazie
-    </button>
-  </section>
+<div class="compliment-mini">
+  Honey, ricordati: non devi essere sempre produttiva.
+  Hai il diritto di divertirti, riposare e fare cose soltanto perché ti piacciono.
+</div>
 
-  <form id="missionForm"
-        action="https://formspree.io/f/xoeeprzg"
-        method="POST"
-        enctype="multipart/form-data">
+<!-- MISSIONE 1 -->
+<section class="card blue mission" id="m1">
+ <span class="number">MISSIONE 01 · 15:00</span>
+ <h2>La partenza del piccolo anfibio</h2>
+ <p>
+  Ismael vuole uscire e sentire il mondo.
+  Scegli una playlist che ti piace e inizia a camminare.
+  Non devi avere una destinazione precisa.
+ </p>
+ <p><strong>Obiettivo:</strong> camminare almeno 15-20 minuti ascoltando musica.</p>
+ <p>
+  Durante la passeggiata, trova qualcosa che ti faccia fermare.
+  Può essere un edificio, un colore, una vetrina, un albero.
+ </p>
+ <label class="checkline"><input type="checkbox" class="mission-check" value="Passeggiata e musica"> Ho completato la missione!</label>
+ <label class="field">Quale canzone hai scelto?</label>
+ <textarea id="music" placeholder="La colonna sonora di Ismael oggi è..."></textarea>
+ <label class="field">Che cosa hai notato durante la passeggiata?</label>
+ <textarea id="walk" placeholder="Ho visto..."></textarea>
+ <div class="compliment-mini">Zahraaaa, anche il viaggio più bello comincia con un passo. E tu sei già partita.</div>
+ <button class="btn small-btn" onclick="sendMission(1)">Invia il rapporto a Naziha</button>
+</section>
 
-    <input type="hidden" name="_subject" value="Ismael ha ricevuto un rapporto da Zahra!">
-    <input type="hidden" name="progetto" value="La grande riabilitazione sociale di Ismael">
-    <input type="hidden" name="rapporto_missioni" id="progressReport">
-    <input type="hidden" name="data_invio" id="submissionDate">
+<!-- MISSIONE 2 -->
+<section class="card pink mission" id="m2">
+ <span class="number">MISSIONE 02 · 15:30</span>
+ <h2>Il servizio fotografico di Ismael</h2>
+ <p>
+  Ismael ha bisogno di aggiornare il suo portfolio.
+  È una rana con ambizioni artistiche.
+ </p>
+ <p>Realizza almeno quattro fotografie:</p>
+ <ul>
+  <li>Ismael in una posa da modello professionista.</li>
+  <li>Ismael davanti a qualcosa di molto bello.</li>
+  <li>Ismael in una situazione ridicola.</li>
+  <li>Ismael in un luogo che non aveva mai visitato.</li>
+ </ul>
+ <p>
+  Puoi anche fotografare dettagli, colori, architettura e cose
+  che attirano la tua attenzione.
+ </p>
+ <label class="checkline"><input type="checkbox" class="mission-check" value="Servizio fotografico"> Ismael ha posato per le foto!</label>
+ <label class="field">Qual è stata la fotografia migliore?</label>
+ <textarea id="photos" placeholder="La foto più bella è quella in cui..."></textarea>
+ <div class="compliment-mini">Hai un occhio artistico. Non dimenticare che il tuo modo di osservare è un talento.</div>
+ <button class="btn small-btn" onclick="sendMission(2)">Invia il rapporto a Naziha</button>
+ <p class="small">Per mandare le fotografie, allegale direttamente alla chat WhatsApp che si aprirà.</p>
+</section>
 
-    <section class="card blue mission">
-      <span class="mission-number">MISSIONE 01</span>
-      <h2>La prova del mondo esterno</h2>
-      <p>
-        Esci e fai una passeggiata. Niente fretta. Osserva le persone,
-        le vetrine, i palazzi, i dettagli che normalmente non noti.
-        Ascolta una canzone che ti piace e goditi il tragitto.
-      </p>
-      <p><strong>Obiettivo:</strong> camminare almeno 20 minuti.</p>
+<!-- MISSIONE 3 -->
+<section class="card green mission" id="m3">
+ <span class="number">MISSIONE 03 · 16:00</span>
+ <h2>Ismael vuole degli amici</h2>
+ <p>
+  Questa è una missione importante.
+  Ismael desidera conoscere nuove persone.
+ </p>
+ <p>
+  Prova a scambiare qualche parola con qualcuno:
+  una domanda, un saluto, un piccolo complimento.
+ </p>
+ <p>
+  <strong>Missione extra:</strong> se trovi una persona simpatica,
+  chiedile se vuole fare una fotografia con te e Ismael.
+  Spiega che è una piccola avventura fotografica.
+  Naturalmente, soltanto con il suo consenso.
+ </p>
+ <p>
+  Non devi insistere e non devi sentirti in obbligo.
+  Anche una conversazione di trenta secondi è un successo.
+ </p>
+ <label class="checkline"><input type="checkbox" class="mission-check" value="Nuovo incontro"> Ho conosciuto qualcuno!</label>
+ <label class="field">Chi hai incontrato? Come è andata?</label>
+ <textarea id="people" placeholder="Ho parlato con..."></textarea>
+ <label class="field">Ismael ha trovato un nuovo amico?</label>
+ <textarea id="friend" placeholder="La persona era..."></textarea>
+ <div class="compliment-mini">Honey, il coraggio non è non avere paura. È concedersi la possibilità di provare.</div>
+ <button class="btn small-btn" onclick="sendMission(3)">Invia il rapporto a Naziha</button>
+</section>
 
-      <label class="check">
-        <input type="checkbox" name="missione_completata[]" value="Passeggiata">
-        Missione completata!
-      </label>
+<!-- MISSIONE 4 -->
+<section class="card orange mission" id="m4">
+ <span class="number">MISSIONE 04 · 16:30</span>
+ <h2>Il regno degli scacchi</h2>
+ <p>
+  Ismael vuole diventare una rana intellettuale.
+  Ha deciso di cimentarsi negli scacchi.
+ </p>
+ <h3>Destinazione: Échecs et Malt</h3>
+ <p>
+  Un bar ludico nel centro di Liegi, con giochi da tavolo,
+  eventi e attività per incontrare altre persone.
+ </p>
+ <p><strong>Indirizzo:</strong> Rue des Carmes 10, 4000 Liège.</p>
+ <p><strong>Martedì:</strong> apertura dalle 15:00 alle 00:00, secondo gli orari pubblicati.</p>
+ <p class="small">
+  Per i giochi è indicato un contributo di 6 € per tavolo da 1-3 persone,
+  oltre a una consumazione minima ogni ora. Verifica sul posto.
+ </p>
+ <a class="maplink" target="_blank" rel="noopener"
+ href="https://www.google.com/maps/search/?api=1&query=Echecs+et+Malt+Rue+des+Carmes+10+Liege">Apri Google Maps</a>
+ <a class="maplink" target="_blank" rel="noopener"
+ href="https://echecsetmalt.com/">Sito del locale</a>
+ <p>
+  <strong>Obiettivo:</strong> entra, guarda i giochi disponibili,
+  chiedi se è possibile giocare a scacchi.
+  Se ti va, prova a fare una partita con qualcuno.
+ </p>
+ <label class="checkline"><input type="checkbox" class="mission-check" value="Scacchi a Liegi"> Missione scacchistica completata!</label>
+ <label class="field">Hai giocato? Hai conosciuto qualcuno?</label>
+ <textarea id="chess" placeholder="Il torneo è andato così..."></textarea>
+ <div class="compliment-mini">La tua curiosità è una qualità bellissima. Continua a coltivarla.</div>
+ <button class="btn small-btn" onclick="sendMission(4)">Invia il rapporto a Naziha</button>
+</section>
 
-      <label>Che cosa hai visto? Raccontamelo:</label>
-      <textarea name="racconto_passeggiata" placeholder="Ho visto..."></textarea>
-    </section>
+<!-- MISSIONE 5 -->
+<section class="card yellow mission" id="m5">
+ <span class="number">MISSIONE 05 · 17:15</span>
+ <h2>La caccia ai luoghi di Liegi</h2>
+ <p>
+  Ismael vuole diventare una rana viaggiatrice.
+  Scegli almeno un posto da esplorare e scatta una fotografia.
+ </p>
 
-    <section class="card green mission">
-      <span class="mission-number">MISSIONE 02</span>
-      <h2>La collezionista di momenti</h2>
-      <p>
-        Scatta tre fotografie:
-      </p>
-      <p>
-        1. Qualcosa di bello.<br>
-        2. Qualcosa di buffo o insolito.<br>
-        3. Qualcosa che rappresenti il tuo umore.
-      </p>
-      <p>
-        Puoi fotografare Ismael, un edificio, un dettaglio,
-        un paesaggio o qualsiasi cosa ti colpisca.
-      </p>
+ <h3>Place du Marché</h3>
+ <p>Una piazza storica nel cuore della città.</p>
+ <p class="small">Place du Marché, 4000 Liège</p>
+ <a class="maplink" target="_blank" rel="noopener"
+ href="https://www.google.com/maps/search/?api=1&query=Place+du+Marche+Liege">Apri la mappa</a>
 
-      <label class="check">
-        <input type="checkbox" name="missione_completata[]" value="Fotografie">
-        Missione completata!
-      </label>
+ <h3>Montagne de Bueren</h3>
+ <p>Una famosa scalinata di 374 gradini. Una piccola impresa per Ismael!</p>
+ <p class="small">Montagne de Bueren, 4000 Liège</p>
+ <a class="maplink" target="_blank" rel="noopener"
+ href="https://www.google.com/maps/search/?api=1&query=Montagne+de+Bueren+Liege">Apri la mappa</a>
 
-      <label>Carica qui le tue fotografie:</label>
-      <input type="file" name="fotografie" accept="image/*" multiple>
+ <h3>Parc de la Boverie</h3>
+ <p>Un parco vicino alla Mosa, perfetto per una pausa e qualche fotografia.</p>
+ <p class="small">Allée Frédéric Chopin, 4020 Liège</p>
+ <a class="maplink" target="_blank" rel="noopener"
+ href="https://www.google.com/maps/search/?api=1&query=Parc+de+la+Boverie+Liege">Apri la mappa</a>
 
-      <p class="small">
-        Se il tuo piano Formspree non permette gli allegati,
-        puoi inviare le foto separatamente e scrivermi qui il racconto.
-      </p>
+ <label class="checkline"><input type="checkbox" class="mission-check" value="Esplorazione di Liegi"> Ho esplorato un posto nuovo!</label>
+ <label class="field">Quale luogo hai scelto?</label>
+ <textarea id="places" placeholder="Siamo andati a..."></textarea>
+ <div class="compliment-mini">Zahra, il mondo è pieno di dettagli meravigliosi. E tu sai guardarli.</div>
+ <button class="btn small-btn" onclick="sendMission(5)">Invia il rapporto a Naziha</button>
+</section>
 
-      <label>Qual è la fotografia che preferisci e perché?</label>
-      <textarea name="storia_fotografie" placeholder="La mia preferita è..."></textarea>
-    </section>
+<!-- MISSIONE 6 -->
+<section class="card purple mission" id="m6">
+ <span class="number">MISSIONE 06 · 17:45 / QUANDO VUOI</span>
+ <h2>Il momento dell'artista</h2>
+ <p>
+  Ora è il momento di rallentare.
+  Ismael ha bisogno di un po' di cultura.
+ </p>
+ <p>Scegli una di queste attività:</p>
+ <ul>
+  <li>Leggere qualche pagina di un libro.</li>
+  <li>Disegnare qualcosa, anche Ismael.</li>
+  <li>Scrivere un pensiero o una piccola storia.</li>
+  <li>Ascoltare una canzone senza fare altro.</li>
+  <li>Osservare il paesaggio e lasciar vagare la mente.</li>
+ </ul>
+ <label class="checkline"><input type="checkbox" class="mission-check" value="Momento creativo"> Mi sono presa un momento per me!</label>
+ <label class="field">Che cosa hai scelto?</label>
+ <textarea id="creative" placeholder="Ho deciso di..."></textarea>
+ <div class="compliment-mini">Non devi produrre qualcosa per meritare una pausa. Sei già abbastanza, così come sei.</div>
+ <button class="btn small-btn" onclick="sendMission(6)">Invia il rapporto a Naziha</button>
+</section>
 
-    <section class="card orange mission">
-      <span class="mission-number">MISSIONE 03</span>
-      <h2>La sfida del coraggio sociale</h2>
-      <p>
-        Oggi prova a scambiare qualche parola con una persona nuova.
-        Può essere una domanda semplice, un complimento sincero
-        o una breve conversazione.
-      </p>
-      <p>
-        <strong>Missione extra:</strong> se ti senti a tuo agio,
-        chiedi a qualcuno di scattare una foto insieme a te e Ismael.
-        Naturalmente solo se la persona è d'accordo.
-      </p>
-      <p>
-        Non devi dimostrare niente a nessuno. Anche un piccolo
-        tentativo conta.
-      </p>
+<section class="card blue">
+ <h2>Il diario segreto di Ismael</h2>
+ <p>
+  C'è qualcosa che vuoi raccontarmi? Un pensiero, una cosa buffa,
+  un momento bello o qualcosa che ti è rimasto in testa?
+ </p>
+ <textarea id="diary" placeholder="Cara Naziha, oggi..."></textarea>
+ <button class="btn blue-btn" onclick="sendDiary()">Invia il tuo pensiero su WhatsApp</button>
+</section>
 
-      <label class="check">
-        <input type="checkbox" name="missione_completata[]" value="Coraggio sociale">
-        Missione completata!
-      </label>
+<section class="card pink">
+ <span class="sticker">UNA PICCOLA PAUSA</span>
+ <h2>Un messaggio per la mia Honey</h2>
+ <div class="compliment" id="pauseCompliment">
+  Non devi essere perfetta. Non devi avere tutto sotto controllo.
+  Puoi semplicemente essere Zahra.
+ </div>
+ <button class="btn yellow-btn" onclick="newCompliment()">Ho bisogno di un altro complimento</button>
+</section>
 
-      <label>Hai parlato con qualcuno? Com'è andata?</label>
-      <textarea name="incontro_sociale" placeholder="Ho incontrato..."></textarea>
-    </section>
+<!-- LETTERA -->
+<section class="card pink" id="letter">
+ <span class="sticker">L'ULTIMA TAPPA · UNA LETTERA</span>
+ <h2>Una cosa che volevo dirti</h2>
 
-    <section class="card pink mission">
-      <span class="mission-number">MISSIONE 04</span>
-      <h2>La mente dell'artista</h2>
-      <p>
-        Fermati in un posto tranquillo. Leggi qualcosa, disegna,
-        scrivi, fai una fotografia artistica o semplicemente
-        lascia vagare la mente.
-      </p>
-      <p>
-        Voglio che tu faccia qualcosa che non abbia uno scopo
-        produttivo. Non tutto deve servire a qualcosa.
-      </p>
+ <div class="letter">
+  <p><strong>Cara Zahra,</strong></p>
 
-      <label class="check">
-        <input type="checkbox" name="missione_completata[]" value="Mente artistica">
-        Missione completata!
-      </label>
+  <p>
+   In questi anni ho ricevuto molte lettere da parte tua,
+   ma poche ne ho scritte io. Come già sai, il motivo è abbastanza
+   evidente: scrivere non è proprio il mio talento più sviluppato.
+   Ma rimedierò, visto che alla fine ho trovato un modo per
+   esprimermi con te senza che tu abbia difficoltà nel decifrare
+   ciò che scrivo. E senza che io debba affrontare la difficoltà
+   di scrivere a mano.
+  </p>
 
-      <label>Che cosa hai creato o pensato?</label>
-      <textarea name="creativita" placeholder="Oggi mi è venuta in mente..."></textarea>
-    </section>
+  <p>
+   Dopo questo monologo noioso, arriviamo a te.
+  </p>
 
-    <section class="card yellow mission">
-      <span class="mission-number">MISSIONE 05</span>
-      <h2>Alla ricerca di Ismael</h2>
-      <p>
-        Ismael ha bisogno di scoprire nuovi territori.
-        Ecco alcuni luoghi da esplorare a Liegi.
-        Scegline almeno uno, oppure visita quelli che preferisci.
-      </p>
+  <p>
+   Zahra, tu sei molto importante per me.
+   Ti ringrazio di essere rimasta con me, anche quando ho provato
+   ad allontanarti molte volte. So che non è sempre stato semplice.
+   Eppure sei ancora qui, e questo significa tantissimo per me.
+   Ti voglio molto bene.
+  </p>
 
-      <h3>1. Place du Marché</h3>
-      <p>
-        Una piazza storica, perfetta per osservare la città
-        e fare qualche fotografia.
-      </p>
-      <p class="small">Place du Marché, 4000 Liège</p>
-      <a class="map-link" target="_blank" rel="noopener"
-         href="https://www.google.com/maps/search/?api=1&query=Place+du+Marche+Liege">
-        Apri la mappa
-      </a>
+  <p>
+   Vorrei essere presente con te per ogni momento.
+   Per ogni cosa nuova che intraprenderai, per ogni cosa bella
+   e per ogni cosa brutta. E se non ci sarò fisicamente,
+   usa la tua immensa immaginazione: ricordati che ci sono
+   persone che fanno il tifo per te anche da lontano.
+  </p>
 
-      <h3>2. Montagne de Bueren</h3>
-      <p>
-        Una scalinata famosa con 374 gradini. Una piccola
-        impresa atletica per Ismael. Puoi fermarti quando vuoi.
-      </p>
-      <p class="small">Montagne de Bueren, 4000 Liège</p>
-      <a class="map-link" target="_blank" rel="noopener"
-         href="https://www.google.com/maps/search/?api=1&query=Montagne+de+Bueren+Liege">
-        Apri la mappa
-      </a>
+  <p>
+   Sarò sempre fiera di te. Per i tuoi traguardi, per l'inizio
+   dei tuoi progetti, per i tuoi tentativi, per le tue idee
+   e per i piccoli passi che magari nessun altro nota.
+   Sarò sempre orgogliosa di te.
+  </p>
 
-      <h3>3. Coteaux de la Citadelle</h3>
-      <p>
-        Percorsi verdi, scalinate e scorci panoramici.
-        Un posto per respirare e guardare la città dall'alto.
-      </p>
-      <p class="small">Rue du Palais, 4000 Liège</p>
-      <a class="map-link" target="_blank" rel="noopener"
-         href="https://www.google.com/maps/search/?api=1&query=Coteaux+de+la+Citadelle+Liege">
-        Apri la mappa
-      </a>
+  <p>
+   E ti ringrazio per avermi permesso di essere tua amica.
+  </p>
 
-      <h3>4. Parc de la Boverie</h3>
-      <p>
-        Un parco vicino alla Mosa, ideale per una passeggiata,
-        una pausa e qualche fotografia.
-      </p>
-      <p class="small">Allée Frédéric Chopin, 4020 Liège</p>
-      <a class="map-link" target="_blank" rel="noopener"
-         href="https://www.google.com/maps/search/?api=1&query=Parc+de+la+Boverie+Liege">
-        Apri la mappa
-      </a>
+  <p>
+   C'è però una cosa di cui ti ho parlato in questi giorni.
+   Sono molto terrorizzata e, allo stesso tempo, tremendamente
+   imbarazzata nel chiedertelo.
+  </p>
 
-      <label class="check">
-        <input type="checkbox" name="missione_completata[]" value="Esplorazione di Liegi">
-        Missione completata!
-      </label>
+  <p>
+   Mi piacerebbe che tu facessi parte della mia famiglia.
+  </p>
 
-      <label>Quale luogo hai visitato? Che cosa ti è piaciuto?</label>
-      <textarea name="luoghi_visitati" placeholder="Sono stata a..."></textarea>
-    </section>
+  <p>
+   Zahra, non riesco a considerarti una sorella, né una figlia,
+   né una madre. E forse non abbiamo nemmeno bisogno di trovare
+   un'etichetta per il nostro legame.
+  </p>
 
-    <section class="card purple mission">
-      <span class="mission-number">MISSIONE 06</span>
-      <h2>Il torneo di Ismael</h2>
-      <p>
-        Gioca a scacchi, a un gioco da tavolo oppure prova
-        qualcosa che non hai mai fatto.
-      </p>
-      <p>
-        Se trovi qualcuno con cui giocare, ancora meglio.
-        Se perdi, puoi sempre dare la colpa alla rana.
-      </p>
+  <p>
+   Non abbiamo bisogno di avere lo stesso sangue o lo stesso
+   cognome. Non abbiamo bisogno di una definizione precisa.
+  </p>
 
-      <label class="check">
-        <input type="checkbox" name="missione_completata[]" value="Gioco o scacchi">
-        Missione completata!
-      </label>
+  <p>
+   Per me la famiglia può essere qualcosa che si sceglie:
+   persone che decidono di esserci, di volersi bene,
+   di rispettarsi, di sostenersi e di condividere una parte
+   del proprio percorso.
+  </p>
 
-      <label>Che cosa hai giocato? Hai vinto?</label>
-      <textarea name="gioco" placeholder="Il risultato del torneo è..."></textarea>
-    </section>
+  <p>
+   Mi renderebbe davvero felice se volessi far parte della mia
+   famiglia. Vorrei costruire qualcosa di nostro, senza dover
+   essere perfette e senza dover interpretare un ruolo.
+  </p>
 
-    <section class="card blue">
-      <h2>Il registro segreto di Ismael</h2>
-      <p>
-        Puoi lasciarmi qui un messaggio, raccontarmi com'è andata
-        la giornata, mandarmi un pensiero o semplicemente scrivere
-        qualcosa che vuoi condividere con me.
-      </p>
+  <p>
+   Saremmo io e te.
+  </p>
 
-      <label for="email">La tua email (facoltativa):</label>
-      <input type="email" id="email" name="email" placeholder="La tua email">
+  <p>
+   E naturalmente Ismael. Non possiamo dimenticare il vero
+   capofamiglia.
+  </p>
 
-      <label for="finalMessage">Il tuo messaggio per me:</label>
-      <textarea id="finalMessage" name="messaggio_per_naziha"
-                placeholder="Cara Naziha..."></textarea>
-    </section>
+  <p>
+   Non devi rispondere per farmi felice e non voglio che tu
+   senta alcun obbligo. Voglio soltanto sapere cosa desideri
+   davvero.
+  </p>
 
-    <section class="card pink">
-      <span class="sticker">ULTIMA MISSIONE</span>
-      <h2>Una lettera per te</h2>
+  <p>
+   Con tanto affetto,<br>
+   <strong>Naziha</strong>
+  </p>
 
-      <p>
-        Cara Zahra,
-      </p>
+  <p><strong>P.S.</strong> Pomodoro frizzante, non dimenticare mai quanto vali.</p>
+ </div>
 
-      <p>
-        Se sei arrivata fin qui, significa che Ismael ha svolto
-        un lavoro eccellente. Oppure che hai cliccato tutto
-        per curiosità. In entrambi i casi, sono soddisfatta.
-      </p>
+ <div class="compliment-mini">
+  Qualunque cosa tu scelga, il tuo valore e il bene che ti voglio
+  non cambiano.
+ </div>
 
-      <p>
-        Volevo dirti una cosa che forse non dico abbastanza:
-        sono felice che tu sia entrata nella mia vita.
-        Sei una persona creativa, particolare, piena di sfumature.
-        Hai un modo tuo di guardare le cose e spero che tu non
-        perda mai quella parte di te.
-      </p>
+ <h2>Allora, Zahra...</h2>
+ <p>Ti piacerebbe far parte della mia famiglia scelta?</p>
 
-      <p>
-        Voglio anche parlarti di una cosa a cui tengo molto:
-        la famiglia che si sceglie.
-      </p>
+ <label class="choice"><input type="radio" name="answer" value="Sì"> Sì. Mi piacerebbe.</label>
+ <label class="choice"><input type="radio" name="answer" value="No"> No.</label>
+ <label class="choice"><input type="radio" name="answer" value="Ho bisogno di tempo"> Ho bisogno di tempo.</label>
 
-      <p>
-        Per me la famiglia non è soltanto una questione di DNA.
-        È fatta di persone che decidono di esserci, che si
-        rispettano, si proteggono, si ascoltano e si vogliono bene.
-        Persone con cui puoi essere te stessa, anche nei giorni
-        in cui non sei al massimo.
-      </p>
+ <label class="field">Vuoi aggiungere qualcosa alla tua risposta?</label>
+ <textarea id="letterReply" placeholder="Vorrei dirti che..."></textarea>
 
-      <p>
-        Non deve essere una famiglia perfetta. Ci saranno
-        incomprensioni, giornate strane, risate stupide,
-        conversazioni infinite e momenti in cui non sapremo
-        nemmeno cosa dire. Ma ci sarà sincerità.
-      </p>
+ <button class="btn green-btn" onclick="sendLetter()">Invia la mia risposta a Naziha</button>
+</section>
 
-      <p>
-        Il primo membro della mia famiglia scelta è stato Jack,
-        il mio gatto. E mi piacerebbe che tu fossi la seconda.
-      </p>
+<section class="final">
+ <div class="frog" onclick="frogTalk()">🐸</div>
+ <h2>Missione quasi compiuta!</h2>
+ <p>
+  Ismael è fiero di te. E anche Naziha.
+  Ricordati di mandare le fotografie direttamente su WhatsApp.
+ </p>
+ <button class="btn" onclick="sendFinalReport()">Invia il rapporto finale completo</button>
+ <div id="status">Messaggio preparato! Ora premi Invia nella chat WhatsApp.</div>
+</section>
 
-      <p>
-        Non è una richiesta di promessa, né un obbligo.
-        Non devi rispondere per farmi felice. Vorrei soltanto
-        sapere come ti senti e se anche tu desideri costruire
-        questo piccolo legame con me.
-      </p>
-
-      <p>
-        Ti voglio bene, pomodoro frizzante.
-      </p>
-
-      <p>
-        Con affetto,<br>
-        Naziha
-      </p>
-
-      <h3>Allora, Zahra... vuoi far parte della mia famiglia scelta?</h3>
-
-      <div class="choice-list">
-        <label class="choice">
-          <input type="radio" name="risposta_lettera" value="Sì" required>
-          Sì. Voglio farne parte.
-        </label>
-
-        <label class="choice">
-          <input type="radio" name="risposta_lettera" value="No">
-          No.
-        </label>
-
-        <label class="choice">
-          <input type="radio" name="risposta_lettera" value="Ho bisogno di tempo">
-          Ho bisogno di tempo.
-        </label>
-      </div>
-
-      <label>Vuoi aggiungere qualcosa alla tua risposta?</label>
-      <textarea name="commento_risposta"
-                placeholder="Vorrei dirti che..."></textarea>
-    </section>
-
-    <section class="send-area">
-      <p class="quote">
-        «Non serve fare grandi cose. A volte basta esserci,
-        con un po' di coraggio e una rana sotto il braccio.»
-      </p>
-
-      <p>
-        Quando hai finito, premi il pulsante qui sotto.
-        Il tuo rapporto arriverà direttamente a Naziha.
-      </p>
-
-      <button class="main-btn send-btn" type="submit" id="sendButton">
-        Invia tutto a Naziha!
-      </button>
-
-      <div id="successMessage">
-        Il rapporto è stato inviato! Ismael è fiero di te.
-      </div>
-    </section>
-
-  </form>
 </main>
 
 <footer>
-  Progetto segreto di Ismael © 2026<br>
-  Creato con affetto, una rana e una quantità esagerata di entusiasmo.
+ Progetto segreto di Ismael · Realizzato con affetto da Naziha.
 </footer>
 
 <script>
+const PHONE = "393314221421";
+
 const compliments = [
-  "Zahra, hai una mente artistica e un modo tutto tuo di vedere il mondo.",
-  "Sei una persona interessante. E no, non è un complimento di circostanza.",
-  "La tua creatività è una cosa preziosa. Non lasciarla in un cassetto.",
-  "Hai il diritto di occupare spazio, di parlare, di ridere e di essere te stessa.",
-  "Il mondo sarebbe un posto un po' più noioso senza le tue stranezze.",
-  "Non devi essere perfetta per essere una persona meravigliosa.",
-  "Hai una sensibilità che merita di essere coltivata, non nascosta.",
-  "Sei più coraggiosa di quanto probabilmente ti concedi di pensare.",
-  "Ismael ha controllato il tuo curriculum: sei ufficialmente una persona fantastica.",
-  "Non dimenticare che anche tu meriti la stessa gentilezza che dai agli altri.",
-  "Hai un universo nella testa. Ogni tanto apri le finestre e lascialo uscire.",
-  "Sei un'opera d'arte in corso. E le opere d'arte non hanno bisogno di fretta."
+ "Baby, hai un modo tutto tuo di vedere il mondo. Non perderlo mai.",
+ "Zahraaaa! La tua creatività è una cosa preziosa.",
+ "Non devi essere perfetta per essere una persona meravigliosa.",
+ "Sei interessante anche quando non stai cercando di esserlo.",
+ "Il mondo ha bisogno di persone che guardano le cose come fai tu.",
+ "Honey, non sottovalutare le tue capacità.",
+ "Hai una sensibilità che merita di essere coltivata.",
+ "Non devi chiedere il permesso per essere te stessa.",
+ "Anche i tuoi piccoli passi meritano di essere celebrati.",
+ "Sei una persona con cui vale la pena condividere il mondo.",
+ "Non lasciare che una giornata difficile ti convinca del contrario.",
+ "La tua immaginazione è un posto bellissimo. Continua a esplorarlo.",
+ "Non devi avere tutto chiaro oggi. Puoi scoprirlo strada facendo.",
+ "Sei più di quello che riesci a fare in una giornata.",
+ "Il tuo talento non deve essere sempre visibile per esistere.",
+ "Pomodoro frizzante, hai il diritto di brillare a modo tuo.",
+ "La tua presenza conta. Anche quando non te ne accorgi.",
+ "Puoi sbagliare, cambiare idea e ricominciare. Non perdi valore.",
+ "Sono fiera di te per ogni volta che provi.",
+ "Ismael ha deciso che sei la sua umana preferita. E ha ottimo gusto.",
+ "Non devi conquistare il mondo oggi. Basta scoprirne un pezzetto.",
+ "Sei degna di amicizie sincere, rispetto e affetto.",
+ "La tua arte merita spazio. E anche tu.",
+ "Non avere paura di essere un po' strana. È una qualità eccellente."
 ];
 
-let complimentIndex = 0;
+let lastCompliment = -1;
 
-function newCompliment() {
-  complimentIndex = (complimentIndex + 1) % compliments.length;
-  document.getElementById("complimentText").textContent =
-    compliments[complimentIndex];
-  makeSparkles();
+function randomCompliment(){
+ let i;
+ do { i = Math.floor(Math.random()*compliments.length); }
+ while(i===lastCompliment);
+ lastCompliment=i;
+ return compliments[i];
 }
 
-function frogMessage() {
-  const messages = [
-    "Ciao Zahra! Sono Ismael. Andiamo a conquistare il mondo.",
-    "Rana presente. Motivazione discutibile, ma presente.",
-    "Non dimenticare di bere acqua. Ordine del direttore.",
-    "Sei pronta? Io sono pronto. Anche se non ho le scarpe.",
-    "Una missione alla volta, Baby!"
-  ];
-  alert(messages[Math.floor(Math.random() * messages.length)]);
+function newCompliment(){
+ const message=randomCompliment();
+ document.getElementById("compliment").textContent=message;
+ document.getElementById("pauseCompliment").textContent=message;
+ sparkle();
 }
 
-function makeSparkles() {
-  const symbols = ["★", "♡", "✿", "✦", "♥"];
-  for (let i = 0; i < 12; i++) {
-    const s = document.createElement("div");
-    s.className = "sparkle";
-    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    s.style.left = Math.random() * 100 + "vw";
-    s.style.top = (50 + Math.random() * 40) + "vh";
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 1100);
-  }
+function frogTalk(){
+ const messages=[
+ "Zahra! Sono Ismael. Ho bisogno di amici. Portami fuori!",
+ "Una rana, una missione e un sogno: diventare popolare.",
+ "Mi hanno detto che oggi conoscerò nuove persone. Sono emozionato.",
+ "Non dimenticare di fare una foto al mio lato migliore.",
+ "Sono piccolo ma ho grandi ambizioni.",
+ "Baby, sei la mia accompagnatrice ufficiale. Non deludermi.",
+ "Ho fame di avventure. E forse anche di lattuga."
+ ];
+ alert(messages[Math.floor(Math.random()*messages.length)]);
+ newCompliment();
 }
 
-const checkboxes = document.querySelectorAll(
-  '.mission input[type="checkbox"]'
-);
-
-const progressBar = document.getElementById("progressBar");
-const progressText = document.getElementById("progressText");
-
-function updateProgress() {
-  const total = checkboxes.length;
-  const completed = [...checkboxes].filter(c => c.checked).length;
-  const percentage = (completed / total) * 100;
-
-  progressBar.style.width = percentage + "%";
-  progressText.textContent =
-    completed + " missioni su " + total + " completate";
-
-  localStorage.setItem("ismael_missions",
-    JSON.stringify([...checkboxes].map(c => c.checked)));
+function sparkle(){
+ const icons=["★","♡","✿","✦","♥"];
+ for(let i=0;i<12;i++){
+  const el=document.createElement("div");
+  el.className="spark";
+  el.textContent=icons[Math.floor(Math.random()*icons.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.top=(50+Math.random()*40)+"vh";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),1100);
+ }
 }
 
-const savedProgress = JSON.parse(
-  localStorage.getItem("ismael_missions") || "[]"
-);
+const checks=[...document.querySelectorAll(".mission-check")];
 
-checkboxes.forEach((checkbox, index) => {
-  checkbox.checked = savedProgress[index] || false;
-  checkbox.addEventListener("change", updateProgress);
-});
+function updateProgress(){
+ const done=checks.filter(c=>c.checked).length;
+ document.getElementById("bar").style.width=(done/checks.length*100)+"%";
+ document.getElementById("progressText").textContent=
+  done+" / "+checks.length+" missioni completate";
+ localStorage.setItem("ismaelProgress",JSON.stringify(checks.map(c=>c.checked)));
+}
 
+try{
+ const saved=JSON.parse(localStorage.getItem("ismaelProgress")||"[]");
+ checks.forEach((c,i)=>c.checked=!!saved[i]);
+}catch(e){}
+
+checks.forEach(c=>c.addEventListener("change",()=>{
+ updateProgress();
+ newCompliment();
+}));
 updateProgress();
 
-document.getElementById("missionForm").addEventListener("submit", function(e) {
-  const selected = [...document.querySelectorAll(
-    'input[name="risposta_lettera"]:checked'
-  )];
+function value(id){
+ return document.getElementById(id)?.value?.trim() || "Nessuna risposta";
+}
 
-  if (selected.length === 0) {
-    e.preventDefault();
-    alert("Zahra, devi scegliere una risposta alla lettera!");
-    return;
-  }
+function checkedMissions(){
+ return checks.filter(c=>c.checked).map(c=>c.value);
+}
 
-  const completed = [...checkboxes]
-    .filter(c => c.checked)
-    .map(c => c.value);
+function openWhatsApp(message){
+ const url="https://wa.me/"+PHONE+"?text="+encodeURIComponent(message);
+ window.open(url,"_blank");
+}
 
-  document.getElementById("progressReport").value =
-    completed.length
-      ? completed.join(", ")
-      : "Nessuna missione contrassegnata come completata.";
+const missionData={
+ 1:{
+  title:"Missione 1 - Passeggiata e musica",
+  ids:["music","walk"]
+ },
+ 2:{
+  title:"Missione 2 - Fotografie di Ismael",
+  ids:["photos"]
+ },
+ 3:{
+  title:"Missione 3 - Nuovi incontri",
+  ids:["people","friend"]
+ },
+ 4:{
+  title:"Missione 4 - Scacchi",
+  ids:["chess"]
+ },
+ 5:{
+  title:"Missione 5 - Esplorazione di Liegi",
+  ids:["places"]
+ },
+ 6:{
+  title:"Missione 6 - Momento creativo",
+  ids:["creative"]
+ }
+};
 
-  document.getElementById("submissionDate").value =
-    new Date().toLocaleString("it-IT");
+function sendMission(n){
+ const m=missionData[n];
+ const completed=checkedMissions();
+ let message="🐸 RAPPORTO DI ISMAEL\n"+m.title+"\n\n";
+ message+="Missioni completate: "+(completed.join(", ")||"Nessuna")+"\n\n";
+ m.ids.forEach(id=>{
+  message+=id+": "+value(id)+"\n\n";
+ });
+ message+="Firmato: Zahra e Ismael.";
+ openWhatsApp(message);
+}
 
-  const button = document.getElementById("sendButton");
-  button.textContent = "Invio in corso...";
-  button.disabled = true;
-});
+function sendDiary(){
+ openWhatsApp("📖 DIARIO SEGRETO DI ISMAEL\n\n"+value("diary"));
+}
+
+function sendLetter(){
+ const selected=document.querySelector('input[name="answer"]:checked');
+ if(!selected){
+  alert("Scegli una risposta alla lettera prima di inviare.");
+  return;
+ }
+ const message=
+ "💌 RISPOSTA ALLA LETTERA\n\n"+
+ "La mia risposta: "+selected.value+"\n\n"+
+ "Il mio messaggio: "+value("letterReply")+"\n\n"+
+ "Con affetto, Zahra.";
+ openWhatsApp(message);
+}
+
+function sendFinalReport(){
+ const selected=document.querySelector('input[name="answer"]:checked');
+ const message=
+ "🐸 RAPPORTO FINALE DI ISMAEL\n"+
+ "La grande riabilitazione sociale\n\n"+
+ "Missioni completate:\n"+
+ (checkedMissions().join("\n")||"Nessuna missione spuntata")+
+ "\n\nPlaylist: "+value("music")+
+ "\nPasseggiata: "+value("walk")+
+ "\nFotografie: "+value("photos")+
+ "\nNuovi incontri: "+value("people")+
+ "\nAmico di Ismael: "+value("friend")+
+ "\nScacchi: "+value("chess")+
+ "\nLuoghi visitati: "+value("places")+
+ "\nMomento creativo: "+value("creative")+
+ "\nDiario: "+value("diary")+
+ "\n\nRisposta alla lettera: "+(selected?selected.value:"Non ancora scelta")+
+ "\nCommento: "+value("letterReply")+
+ "\n\nIsmael ringrazia per la collaborazione.";
+ openWhatsApp(message);
+ document.getElementById("status").style.display="block";
+ sparkle();
+}
 </script>
-
 </body>
 </html>
